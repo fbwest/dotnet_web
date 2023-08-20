@@ -14,3 +14,4 @@ dotnet_web.sln.DotSettings.user
 !/.idea/.idea.*/.idea
 /.idea/.idea.*/.idea/*
 !/.idea/.idea.*/.idea/runConfigurations
+/.idea/.idea.*/.idea/workspace.xml
