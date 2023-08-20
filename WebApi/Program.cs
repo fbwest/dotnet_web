@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Formatters; // IOutputFormatter, OutputFormatter
 using West.Shared; // AddNorthwindContext extension method
+using WebApi.Repositories; // ICustomerRepository, CustomerRepository
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ builder.Services.AddControllers(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 var app = builder.Build();
 
