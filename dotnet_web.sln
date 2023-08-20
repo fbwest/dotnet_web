@@ -2,13 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.EntityModels.Sqlite", "Northwind.Common.EntityModels.Sqlite\Northwind.Common.EntityModels.Sqlite.csproj", "{1918946C-1A6E-4320-917F-B280C44E7317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{C04FBFF5-545D-458D-9833-082DC19D69C0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.DataContext.Sqlite", "Northwind.Common.DataContext.Sqlite\Northwind.Common.DataContext.Sqlite.csproj", "{EA9514E3-826D-4B2F-9C36-69B7085F2779}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.EntityModels.SqlServer", "Northwind.Common.EntityModels.SqlServer\Northwind.Common.EntityModels.SqlServer.csproj", "{AF30F7B1-457D-44D8-B996-B6A1C33E5FA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.DataContext.SqlServer", "Northwind.Common.DataContext.SqlServer\Northwind.Common.DataContext.SqlServer.csproj", "{FA3A4F64-2F5C-4B12-82EB-A9221867F5FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{15B1FEEC-2B52-41C2-828C-76599794C857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +20,6 @@ Global
 		{1918946C-1A6E-4320-917F-B280C44E7317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1918946C-1A6E-4320-917F-B280C44E7317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1918946C-1A6E-4320-917F-B280C44E7317}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C04FBFF5-545D-458D-9833-082DC19D69C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C04FBFF5-545D-458D-9833-082DC19D69C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C04FBFF5-545D-458D-9833-082DC19D69C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C04FBFF5-545D-458D-9833-082DC19D69C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA9514E3-826D-4B2F-9C36-69B7085F2779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA9514E3-826D-4B2F-9C36-69B7085F2779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA9514E3-826D-4B2F-9C36-69B7085F2779}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +32,9 @@ Global
 		{FA3A4F64-2F5C-4B12-82EB-A9221867F5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA3A4F64-2F5C-4B12-82EB-A9221867F5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA3A4F64-2F5C-4B12-82EB-A9221867F5FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B1FEEC-2B52-41C2-828C-76599794C857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B1FEEC-2B52-41C2-828C-76599794C857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B1FEEC-2B52-41C2-828C-76599794C857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B1FEEC-2B52-41C2-828C-76599794C857}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
