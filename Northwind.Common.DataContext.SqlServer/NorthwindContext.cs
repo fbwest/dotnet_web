@@ -70,8 +70,11 @@ public partial class NorthwindContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=Northwind;Integrated Security=true;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer(
+            "Data Source=.;" +
+            "Initial Catalog=Northwind;" +
+            "Integrated Security=true;" +
+            "TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -89,14 +92,17 @@ public partial class NorthwindContext : DbContext
         {
             entity.ToView("Current Product List");
 
-            entity.Property(e => e.ProductId).ValueGeneratedOnAdd();
+            entity.Property(e => e.ProductId)
+                .ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.Property(e => e.CustomerId).IsFixedLength();
+            entity.Property(e => e.CustomerId)
+                .IsFixedLength();
 
-            entity.HasMany(d => d.CustomerTypes).WithMany(p => p.Customers)
+            entity.HasMany(d => d.CustomerTypes)
+                .WithMany(p => p.Customers)
                 .UsingEntity<Dictionary<string, object>>(
                     "CustomerCustomerDemo",
                     r => r.HasOne<CustomerDemographic>().WithMany()
@@ -109,7 +115,8 @@ public partial class NorthwindContext : DbContext
                         .HasConstraintName("FK_CustomerCustomerDemo_Customers"),
                     j =>
                     {
-                        j.HasKey("CustomerId", "CustomerTypeId").IsClustered(false);
+                        j.HasKey("CustomerId", "CustomerTypeId")
+                            .IsClustered(false);
                         j.ToTable("CustomerCustomerDemo");
                         j.IndexerProperty<string>("CustomerId")
                             .HasMaxLength(5)
@@ -129,16 +136,21 @@ public partial class NorthwindContext : DbContext
 
         modelBuilder.Entity<CustomerDemographic>(entity =>
         {
-            entity.HasKey(e => e.CustomerTypeId).IsClustered(false);
+            entity.HasKey(e => e.CustomerTypeId)
+                .IsClustered(false);
 
-            entity.Property(e => e.CustomerTypeId).IsFixedLength();
+            entity.Property(e => e.CustomerTypeId)
+                .IsFixedLength();
         });
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasOne(d => d.ReportsToNavigation).WithMany(p => p.InverseReportsToNavigation).HasConstraintName("FK_Employees_Employees");
+            entity.HasOne(d => d.ReportsToNavigation)
+                .WithMany(p => p.InverseReportsToNavigation)
+                .HasConstraintName("FK_Employees_Employees");
 
-            entity.HasMany(d => d.Territories).WithMany(p => p.Employees)
+            entity.HasMany(d => d.Territories)
+                .WithMany(p => p.Employees)
                 .UsingEntity<Dictionary<string, object>>(
                     "EmployeeTerritory",
                     r => r.HasOne<Territory>().WithMany()
@@ -151,9 +163,11 @@ public partial class NorthwindContext : DbContext
                         .HasConstraintName("FK_EmployeeTerritories_Employees"),
                     j =>
                     {
-                        j.HasKey("EmployeeId", "TerritoryId").IsClustered(false);
+                        j.HasKey("EmployeeId", "TerritoryId")
+                            .IsClustered(false);
                         j.ToTable("EmployeeTerritories");
-                        j.IndexerProperty<int>("EmployeeId").HasColumnName("EmployeeID");
+                        j.IndexerProperty<int>("EmployeeId")
+                            .HasColumnName("EmployeeID");
                         j.IndexerProperty<string>("TerritoryId")
                             .HasMaxLength(20)
                             .HasColumnName("TerritoryID");
@@ -164,32 +178,45 @@ public partial class NorthwindContext : DbContext
         {
             entity.ToView("Invoices");
 
-            entity.Property(e => e.CustomerId).IsFixedLength();
+            entity.Property(e => e.CustomerId)
+                .IsFixedLength();
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.Property(e => e.CustomerId).IsFixedLength();
-            entity.Property(e => e.Freight).HasDefaultValueSql("((0))");
+            entity.Property(e => e.CustomerId)
+                .IsFixedLength();
+            entity.Property(e => e.Freight)
+                .HasDefaultValueSql("((0))");
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Orders).HasConstraintName("FK_Orders_Customers");
+            entity.HasOne(d => d.Customer)
+                .WithMany(p => p.Orders)
+                .HasConstraintName("FK_Orders_Customers");
 
-            entity.HasOne(d => d.Employee).WithMany(p => p.Orders).HasConstraintName("FK_Orders_Employees");
+            entity.HasOne(d => d.Employee)
+                .WithMany(p => p.Orders)
+                .HasConstraintName("FK_Orders_Employees");
 
-            entity.HasOne(d => d.ShipViaNavigation).WithMany(p => p.Orders).HasConstraintName("FK_Orders_Shippers");
+            entity.HasOne(d => d.ShipViaNavigation)
+                .WithMany(p => p.Orders)
+                .HasConstraintName("FK_Orders_Shippers");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => new { e.OrderId, e.ProductId }).HasName("PK_Order_Details");
+            entity.HasKey(e => new { e.OrderId, e.ProductId })
+                .HasName("PK_Order_Details");
 
-            entity.Property(e => e.Quantity).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Quantity)
+                .HasDefaultValueSql("((1))");
 
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
+            entity.HasOne(d => d.Order)
+                .WithMany(p => p.OrderDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Order_Details_Orders");
 
-            entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
+            entity.HasOne(d => d.Product)
+                .WithMany(p => p.OrderDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Order_Details_Products");
         });
@@ -208,7 +235,8 @@ public partial class NorthwindContext : DbContext
         {
             entity.ToView("Orders Qry");
 
-            entity.Property(e => e.CustomerId).IsFixedLength();
+            entity.Property(e => e.CustomerId)
+                .IsFixedLength();
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -218,9 +246,13 @@ public partial class NorthwindContext : DbContext
             entity.Property(e => e.UnitsInStock).HasDefaultValueSql("((0))");
             entity.Property(e => e.UnitsOnOrder).HasDefaultValueSql("((0))");
 
-            entity.HasOne(d => d.Category).WithMany(p => p.Products).HasConstraintName("FK_Products_Categories");
+            entity.HasOne(d => d.Category)
+                .WithMany(p => p.Products)
+                .HasConstraintName("FK_Products_Categories");
 
-            entity.HasOne(d => d.Supplier).WithMany(p => p.Products).HasConstraintName("FK_Products_Suppliers");
+            entity.HasOne(d => d.Supplier)
+                .WithMany(p => p.Products)
+                .HasConstraintName("FK_Products_Suppliers");
         });
 
         modelBuilder.Entity<ProductSalesFor1997>(entity =>
@@ -279,7 +311,8 @@ public partial class NorthwindContext : DbContext
 
             entity.Property(e => e.TerritoryDescription).IsFixedLength();
 
-            entity.HasOne(d => d.Region).WithMany(p => p.Territories)
+            entity.HasOne(d => d.Region)
+                .WithMany(p => p.Territories)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Territories_Region");
         });
