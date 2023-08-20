@@ -9,10 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0c3bdc3-408d-4e89-8adb-812975828627" name="Changes" comment="new files">
-      <change afterPath="$PROJECT_DIR$/Northwind.Common.DataContext.SqlServer/NorthwindContextExtensions.cs" afterDir="false" />
+    <list default="true" id="e0c3bdc3-408d-4e89-8adb-812975828627" name="Changes" comment="add dbcontext extension">
+      <change afterPath="$PROJECT_DIR$/Northwind.Common.UnitTests/EntityModelTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Northwind.Common.UnitTests/Northwind.Common.UnitTests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Northwind.Common.UnitTests/Usings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dotnet_web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dotnet_web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Northwind.Common.DataContext.SqlServer/NorthwindContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Northwind.Common.DataContext.SqlServer/NorthwindContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dotnet_web.sln" beforeDir="false" afterPath="$PROJECT_DIR$/dotnet_web.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +139,7 @@
       <workItem from="1692375673946" duration="3947000" />
       <workItem from="1692439748341" duration="7098000" />
       <workItem from="1692451806829" duration="2035000" />
-      <workItem from="1692523561730" duration="3774000" />
+      <workItem from="1692523561730" duration="4388000" />
     </task>
     <task id="LOCAL-00001" summary="creating sqlite/sqlserver context &amp; entities">
       <option name="closed" value="true" />
@@ -171,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692538083167</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add dbcontext extension">
+      <option name="closed" value="true" />
+      <created>1692539063912</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692539063912</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +206,7 @@
     <MESSAGE value="sln" />
     <MESSAGE value="adding webapi" />
     <MESSAGE value="new files" />
-    <option name="LAST_COMMIT_MESSAGE" value="new files" />
+    <MESSAGE value="add dbcontext extension" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dbcontext extension" />
   </component>
 </project>

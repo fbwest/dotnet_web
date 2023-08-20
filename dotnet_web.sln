@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.DataContex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{15B1FEEC-2B52-41C2-828C-76599794C857}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.UnitTests", "Northwind.Common.UnitTests\Northwind.Common.UnitTests.csproj", "{20B78850-25A1-4947-ADF1-392BF06935C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{15B1FEEC-2B52-41C2-828C-76599794C857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B1FEEC-2B52-41C2-828C-76599794C857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B1FEEC-2B52-41C2-828C-76599794C857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20B78850-25A1-4947-ADF1-392BF06935C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B78850-25A1-4947-ADF1-392BF06935C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B78850-25A1-4947-ADF1-392BF06935C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B78850-25A1-4947-ADF1-392BF06935C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
