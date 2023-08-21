@@ -95,13 +95,8 @@ public class CustomerRepository : ICustomerRepository
         var customer = await db.Customers.FindAsync(id);
         if (customer is null) return null;
         db.Customers.Remove(customer);
-        if (await db.SaveChangesAsync() == 1)
-        {
+        return await db.SaveChangesAsync() != 1 ? null :
             // delete from cache
-            if (customersCache is null) return null;
-            customersCache.TryRemove(id, out customer);
-        }
-        
-        return null!;
+            customersCache?.TryRemove(id, out customer);
     }
 }

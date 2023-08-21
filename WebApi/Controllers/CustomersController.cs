@@ -46,6 +46,8 @@ public class CustomersController : Controller
     public async Task<IActionResult> Create([FromBody] Customer? customer)
     {
         if (customer is null) return BadRequest();
+        if (await _repo.RetrieveAsync(customer.CustomerId) is not null)
+            return BadRequest("Customer already exists!");
 
         if (await _repo.CreateAsync(customer) is null) return BadRequest("Cannot create new customer!");
         return CreatedAtRoute(
