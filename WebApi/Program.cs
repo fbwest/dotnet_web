@@ -39,6 +39,11 @@ builder.Services.AddHttpLogging(options =>
     options.RequestBodyLogLimit = 4096;
     options.ResponseBodyLogLimit = 4096;
 });
+builder.Services.AddW3CLogging(options =>
+{
+    options.AdditionalRequestHeaders.Add("x-forwarded-for");
+    options.AdditionalRequestHeaders.Add("x-client-ssl-protocol");
+});
 
 var app = builder.Build();
 
