@@ -78,6 +78,20 @@ public class CustomersController : Controller
     [ProducesResponseType(404)]
     public async Task<IActionResult> Delete(string id)
     {
+        // take control of problem details
+        if (id == "bad")
+        {
+            var problemDetails = new ProblemDetails
+            {
+                Status = StatusCodes.Status400BadRequest,
+                Type = "https://localhost:5001/customers/failed-to-delete",
+                Title = $"Customer {id} found but failed to delete",
+                Detail = "More details like Company Name, Country and so on.",
+                Instance = HttpContext.Request.Path
+            };
+            return BadRequest(problemDetails);
+        }
+        
         if (await _repo.RetrieveAsync(id) == null) return NotFound(); // 404
         var isDeleted = await _repo.DeleteAsync(id);
         if (isDeleted.HasValue && isDeleted.Value) return new NoContentResult(); // 204
