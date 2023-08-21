@@ -30,7 +30,7 @@ public class CustomersController : Controller
     // GET: api/customers/[id]
     [HttpGet("{id}", Name = nameof(GetCustomer))]
     [ProducesResponseType(200, Type = typeof(Customer))]
-    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
     public async Task<IActionResult> GetCustomer(string id)
     {
         var customer = await _repo.RetrieveAsync(id);
