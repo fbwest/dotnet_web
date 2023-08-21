@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common.UnitTests", "Northwind.Common.UnitTests\Northwind.Common.UnitTests.csproj", "{20B78850-25A1-4947-ADF1-392BF06935C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCApp", "MVCApp\MVCApp.csproj", "{2D249D6B-CC6D-49A0-9AC7-E920FF31A41E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{20B78850-25A1-4947-ADF1-392BF06935C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20B78850-25A1-4947-ADF1-392BF06935C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20B78850-25A1-4947-ADF1-392BF06935C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D249D6B-CC6D-49A0-9AC7-E920FF31A41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D249D6B-CC6D-49A0-9AC7-E920FF31A41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D249D6B-CC6D-49A0-9AC7-E920FF31A41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D249D6B-CC6D-49A0-9AC7-E920FF31A41E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

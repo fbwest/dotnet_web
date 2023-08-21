@@ -1,0 +1,4 @@
+#Version: 1.0
+#Start-Date: 2023-08-21 11:42:37
+#Fields: date time c-ip s-computername s-ip s-port cs-method cs-uri-stem cs-uri-query sc-status time-taken cs-version cs-host cs(User-Agent) cs(Referer) cs(x-client-ssl-protocol) cs(x-forwarded-for)
+2023-08-21 11:42:35 ::1 PUSSY ::1 5001 GET /api/customers - 200 1189.1038 HTTP/2 localhost:5001 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/115.0.0.0+Safari/537.36+Edg/115.0.1901.203 - - -
