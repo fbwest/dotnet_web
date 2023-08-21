@@ -3,6 +3,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h3>Query customers from a service</h3>
+    <form asp-action="Customers" method="get">
+        <input name="Country" placeholder="Enter a country" />
+        <input type="submit"/>
+    </form>
 </div>

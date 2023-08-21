@@ -1,0 +1,40 @@
+@using West.Shared
+@model IEnumerable<Customer>
+
+<h2>@ViewData["Title"]</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Company name</th>
+        <th>Contact name</th>
+        <th>Address</th>
+        <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model is not null)
+    {
+        @foreach (Customer customer in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.Address)
+                    @Html.DisplayFor(modelItem => customer.City)
+                    @Html.DisplayFor(modelItem => customer.Region)
+                    @Html.DisplayFor(modelItem => customer.Country)
+                    @Html.DisplayFor(modelItem => customer.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.Phone)
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
