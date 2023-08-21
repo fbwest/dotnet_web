@@ -1,15 +1,28 @@
-using System.Net.Http.Headers; // MediaTypeWithQualityHeaderValue
+using System.Net;
+using System.Net.Http.Headers;using Polly;
+using Polly.Extensions.Http; // MediaTypeWithQualityHeaderValue
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient("WebApi", options =>
+    {
+        options.BaseAddress = new Uri("https://localhost:5002/");
+        options.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json", 1.0));
+    })
+    .SetHandlerLifetime(TimeSpan.FromMinutes(5)) //Set lifetime to five minutes
+    .AddPolicyHandler(GetRetryPolicy());
+
+static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 {
-    options.BaseAddress = new Uri("https://localhost:5002/");
-    options.DefaultRequestHeaders.Accept.Add(
-        new MediaTypeWithQualityHeaderValue("application/json", 1.0));
-});
+    return HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .OrResult(msg => msg.StatusCode == HttpStatusCode.NotFound)
+        .WaitAndRetryAsync(6, retryAttempt =>
+            TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+}
 
 var app = builder.Build();
 
