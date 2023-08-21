@@ -11,21 +11,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddNothwindContext();
 builder.Services.AddControllers(options =>
 {
+    Console.ForegroundColor = ConsoleColor.DarkCyan;
     Console.WriteLine("Default output formatters:");
     foreach (IOutputFormatter formatter in options.OutputFormatters)
     {
         OutputFormatter? mediaFormatter = formatter as OutputFormatter;
         if (mediaFormatter is null)
         {
-            Console.WriteLine($"    {formatter.GetType().Name}");
+            Console.WriteLine($"- {formatter.GetType().Name}");
         }
         else // OutputFormatter class has SupportedMediaTypes
         {
-            Console.WriteLine("    {0}, Media types: {1}",
+            Console.WriteLine("- {0}, Media types: {1}",
                 mediaFormatter.GetType().Name,
                 string.Join(", ", mediaFormatter.SupportedMediaTypes));
         }
     }
+    Console.ResetColor();
 })
     .AddXmlDataContractSerializerFormatters()
     .AddXmlSerializerFormatters();
@@ -44,6 +46,10 @@ builder.Services.AddW3CLogging(options =>
     options.AdditionalRequestHeaders.Add("x-forwarded-for");
     options.AdditionalRequestHeaders.Add("x-client-ssl-protocol");
 });
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<NorthwindContext>()
+    // execute SELECT 1 using the specified connection string
+    .AddSqlServer(NorthwindContext.SqlServerConnectionString);
 
 var app = builder.Build();
 
@@ -63,6 +69,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseHealthChecks(path:"/howdoyoufeel");
 
 app.MapControllers();
 

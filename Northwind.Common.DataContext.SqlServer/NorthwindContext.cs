@@ -68,13 +68,14 @@ public partial class NorthwindContext : DbContext
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
     public virtual DbSet<Territory> Territories { get; set; }
+    
+    public const string SqlServerConnectionString = "Data Source=.;" +
+                                                    "Initial Catalog=Northwind;" +
+                                                    "Integrated Security=true;" +
+                                                    "TrustServerCertificate=true;";
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(
-            "Data Source=.;" +
-            "Initial Catalog=Northwind;" +
-            "Integrated Security=true;" +
-            "TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer(SqlServerConnectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
