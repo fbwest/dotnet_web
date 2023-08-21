@@ -32,7 +32,7 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public async Task<IActionResult> CustomerGetAll(string country)
+    public async Task<IActionResult> Customers(string country)
     {
         string uri;
 
@@ -50,7 +50,7 @@ public class HomeController : Controller
         HttpClient client = _clientFactory.CreateClient("WebApi");
         HttpRequestMessage request = new(HttpMethod.Get, uri);
         HttpResponseMessage response = await client.SendAsync(request);
-        var model = response.Content.ReadFromJsonAsync<IEnumerable<Customer>>();
+        var model = await response.Content.ReadFromJsonAsync<IEnumerable<Customer>>();
 
         return View(model);
     }
